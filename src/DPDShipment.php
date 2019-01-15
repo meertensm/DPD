@@ -64,6 +64,18 @@ class DPDShipment{
                     'comment' => null 
                 ]
             ],
+            'cod'                   => [
+                'amount'            => null,
+                'currency'          => null,
+                'inkasso'           => null,
+                'purpose'           => null,
+                'bankCode'          => null,
+                'bankName'          => null,
+                'bankAccountNumber' => null,
+                'bankAccountHolder' => null,
+                'iban'              => null,
+                'bic'               => null,
+            ],
             'parcels' => [],
             'productAndServiceData' => [
                 'saturdayDelivery' => false,
@@ -226,6 +238,15 @@ class DPDShipment{
             $array['language'] = strtoupper($array['language']);        
         }
         $this->storeOrderMessage['order']['productAndServiceData']['predict'] = $array;
+    }
+
+    /**
+     * Set the shipment's Cash On Delivery (COD) values (German: Nachnahme)
+     * @param array $array see protected $storeOrderMessage
+     */
+    public function setCashOnDelivery ($array)
+    {
+        $this->storeOrderMessage['order']['cod'] = $array;
     }
 
     /**
